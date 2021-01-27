@@ -29,46 +29,47 @@ client.on('message', message => {
     switch (command) {
         case("profile"):
             osuApi.apiCall('/get_user', { u: user }).then(user => {
-                if (user === undefined) return message.channel.send("Please enter a valid Osu! username!")
-                if (user.length == 0) return message.channel.send("Please enter a valid Osu! username!")
-                if (user[0].pp_raw === null) return message.channel.send(`User ${user[0].username} has nothing to show`)
+                // if (user === undefined) return message.channel.send("Please enter a valid Osu! username!")
+                // if (user.length == 0) return message.channel.send("Please enter a valid Osu! username!")
+                // if (user[0].pp_raw === null) return message.channel.send(`User ${user[0].username} has nothing to show`)
                 
-                //variables
-                const userid = user[0].user_id
+                // //variables
+                // const userid = user[0].user_id
                 const username = user[0].username
-                const rank = user[0].pp_rank
-                const pp = user[0].pp_raw
-                const accuracy = user[0].accuracy
-                const lvl = user[0].level
-                const playcount = user[0].playcount
-                const country = user[0].country
-                const countryrank = user[0].pp_country_rank
+                // const rank = user[0].pp_rank
+                // const pp = user[0].pp_raw
+                // const accuracy = user[0].accuracy
+                // const lvl = user[0].level
+                // const playcount = user[0].playcount
+                // const country = user[0].country
+                // const countryrank = user[0].pp_country_rank
 
-                var userimage = `http://s.ppy.sh/a/${userid}`
+                // var userimage = `http://s.ppy.sh/a/${userid}`
 
-                //send the embed
-                message.channel.send({
-                  embed: {
-                    color: "#ff66aa",
-                    author: {
-                        name: `Osu! Standard profile for ${username}`,
-                        icon_url: `https://osu.ppy.sh/images/flags/${country}.png`,
-                        url: `https://osu.ppy.sh/users/${userid}`,
-                    },
-                    description: `▸ **Official Rank:** ${rank} (${country}#${countryrank}) \n
-                                  ▸ **Total PP:** ${parseFloat(pp).toFixed()} \n
-                                  ▸ **Level:** ${parseFloat(lvl).toFixed()} (Playcount: ${playcount}) \n
-                                  ▸ **Hit Accuracy:** ${parseFloat(accuracy).toFixed(2)}%`,
-                    thumbnail: {
-                        url: userimage,
-                    },
-                    timestamp: new Date(),
-                    footer: {
-                            icon_url: message.author.displayAvatarURL(),
-                            text: message.author.tag
-                        }
-                    }
-                })
+                // //send the embed
+                // message.channel.send({
+                //   embed: {
+                //     color: "#ff66aa",
+                //     author: {
+                //         name: `Osu! Standard profile for ${username}`,
+                //         icon_url: `https://osu.ppy.sh/images/flags/${country}.png`,
+                //         url: `https://osu.ppy.sh/users/${userid}`,
+                //     },
+                //     description: `▸ **Official Rank:** ${rank} (${country}#${countryrank}) \n
+                //                   ▸ **Total PP:** ${parseFloat(pp).toFixed()} \n
+                //                   ▸ **Level:** ${parseFloat(lvl).toFixed()} (Playcount: ${playcount}) \n
+                //                   ▸ **Hit Accuracy:** ${parseFloat(accuracy).toFixed(2)}%`,
+                //     thumbnail: {
+                //         url: userimage,
+                //     },
+                //     timestamp: new Date(),
+                //     footer: {
+                //             icon_url: message.author.displayAvatarURL(),
+                //             text: message.author.tag
+                //         }
+                //     }
+                // })
+                message.channel.send(`https://lemmmy.pw/osusig/sig.php?colour=hexff66aa&uname=${username}&pp=1&avatarrounding=4`)
             });
             break
         case("topplay"):
