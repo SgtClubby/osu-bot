@@ -92,7 +92,9 @@ client.on('message', message => {
                           "pp": score[0].pp
                     }
                 }
+                console.log(json)
                 const res = await lookaymyscore(json)
+                console.log(res)
                 message.channel.send(res.image.url)
             });
             break          
